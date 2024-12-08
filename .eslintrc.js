@@ -3,6 +3,7 @@ module.exports = {
   extends: [
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
+    "plugin:import/recommended",
   ],
   ignorePatterns: [".eslintrc.js"],
   parser: "@typescript-eslint/parser",
@@ -18,5 +19,23 @@ module.exports = {
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "import/extensions": "off",
+    "import/no-unresolved": "off",
+    "import/order": [
+      "error",
+      {
+        alphabetize: { order: "asc", caseInsensitive: true },
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          "parent",
+          "sibling",
+          "index",
+        ],
+        "newlines-between": "always",
+      },
+    ],
+    "import/prefer-default-export": "off",
   },
 };
