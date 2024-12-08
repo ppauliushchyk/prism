@@ -1,5 +1,5 @@
 {
-  "overrides": [{ "files": "**/*.hbs", "options": { "parser": "angular" } }],
   "singleQuote": false,
-  "trailingComma": "all"
+  "trailingComma": "all",
+  "overrides": [{ "files": "**/*.hbs", "options": { "parser": "angular" } }]
 }
