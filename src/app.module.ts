@@ -1,21 +1,23 @@
 import { join } from "path";
 
+import { HttpModule } from "@nestjs/axios";
 import { Module } from "@nestjs/common";
 import { ConfigModule } from "@nestjs/config";
+import { RouterModule } from "@nestjs/core";
 import { ServeStaticModule } from "@nestjs/serve-static";
 
 import configuration from "../config/configuration";
 
 import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
+import { DatabaseService } from "./database.service";
 import { PaymentController } from "./payment/payment.controller";
-import { ConfigModule } from "@nestjs/config";
-import { HttpModule } from "@nestjs/axios";
 import { ProviderModule } from "./provider/provider.module";
-import configuration from "../config/configuration";
-import { RouterModule } from "@nestjs/core";
+import { ProviderService } from "./provider/provider.service";
+import { PurchaseController } from "./purchase/purchase.controller";
+import { PurchaseService } from "./purchase/purchase.service";
 
 @Module({
+  controllers: [AppController, PaymentController, PurchaseController],
   imports: [
     ConfigModule.forRoot({ load: [configuration] }),
     HttpModule,
@@ -26,7 +28,6 @@ import { RouterModule } from "@nestjs/core";
       serveRoot: "/public/",
     }),
   ],
-  controllers: [AppController, PaymentController],
-  providers: [AppService],
+  providers: [DatabaseService, ProviderService, PurchaseService],
 })
 export class AppModule {}

@@ -1,5 +1,6 @@
-import { validate } from "src/utils/card-number";
 import { z } from "zod";
+
+import { validate } from "../utils/card-number";
 
 export const createPaymentSchema = z
   .object({
