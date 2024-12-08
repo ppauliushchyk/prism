@@ -1,10 +1,12 @@
-import { AppModule } from "../src/app.module";
-import { engine } from "express-handlebars";
-import { INestApplication } from "@nestjs/common";
 import { join } from "path";
+
+import { INestApplication } from "@nestjs/common";
 import { NestExpressApplication } from "@nestjs/platform-express";
 import { Test, TestingModule } from "@nestjs/testing";
+import { engine } from "express-handlebars";
 import * as request from "supertest";
+
+import { AppModule } from "../src/app.module";
 
 describe("AppController (e2e)", () => {
   let app: INestApplication;
@@ -61,6 +63,17 @@ describe("AppController (e2e)", () => {
 
         expect(response.status).toBe(200);
         expect(response.text).toContain("Payment Failed");
+      });
+    });
+
+    describe("/pending", () => {
+      it("should render", async () => {
+        const response = await request(app.getHttpServer()).get(
+          "/payment/pending",
+        );
+
+        expect(response.status).toBe(200);
+        expect(response.text).toContain("Pending Payment");
       });
     });
 
