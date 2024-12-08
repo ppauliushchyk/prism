@@ -1,6 +1,11 @@
-import { Controller, Get, Logger, Req, Res } from "@nestjs/common";
+import { Body, Controller, Get, Logger, Post, Req, Res } from "@nestjs/common";
 
 import { Request, Response } from "express";
+import {
+  CreatePaymentDto,
+  createPaymentSchema,
+} from "./schemas/payment.schema";
+import { ValidationPipe } from "./pipes/validation.pipe";
 
 @Controller()
 export class AppController {
@@ -16,5 +21,19 @@ export class AppController {
     });
 
     return res.render("index");
+  }
+
+  @Post("/")
+  async createPayment(
+    @Res() res: Response,
+    @Body(new ValidationPipe(createPaymentSchema))
+    dto: { data: CreatePaymentDto; errors?: any },
+  ) {
+    if (dto.errors) {
+      return res.render("index", {
+        data: { amount: dto.data.amount },
+        errors: dto.errors,
+      });
+    }
   }
 }

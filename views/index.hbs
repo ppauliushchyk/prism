@@ -7,7 +7,12 @@
         <div class="card-body p-4">
           <h4 class="mb-3">Payment Form</h4>
 
-          <form class="needs-validation mb-0" novalidate="">
+          <form
+            class="needs-validation{{#if errors }} was-validated {{/if}}mb-0"
+            novalidate=""
+            action="/"
+            method="post"
+          >
             <div class="row gy-3 mb-4">
               <div class="col-sm-6">
                 <label for="amount__input" class="form-label">Amount</label>
@@ -18,23 +23,32 @@
                   placeholder=""
                   required=""
                   type="text"
-                  value=""
+                  value="{{ data.amount }}"
                 />
-                <div class="invalid-feedback">Valid amount is required.</div>
+                {{#if errors.amount }}
+                {{#each errors.amount}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
 
               <div class="col-sm-6">
                 <label for="currency__input" class="form-label">Currency</label>
-                <input
-                  type="text"
-                  class="form-control"
+
+                <select
+                  class="form-select"
                   id="currency__input"
-                  placeholder=""
-                  value=""
-                  required=""
                   name="currency"
-                />
-                <div class="invalid-feedback">Valid currency is required.</div>
+                >
+                  <option selected value="EUR">Euro</option>
+                  <option value="USD">US Dollar</option>
+                </select>
+
+                {{#if errors.currency }}
+                {{#each errors.currency}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
 
               <div class="col-md-6">
@@ -52,7 +66,12 @@
                 <small class="text-body-secondary"
                   >Full name as displayed on card</small
                 >
-                <div class="invalid-feedback">Name on card is required</div>
+
+                {{#if errors.cc_name }}
+                {{#each errors.cc_name}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
 
               <div class="col-md-6">
@@ -67,9 +86,12 @@
                   required=""
                   name="cc_number"
                 />
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
+
+                {{#if errors.cc_number }}
+                {{#each errors.cc_number}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
 
               <div class="col-md-3">
@@ -84,7 +106,12 @@
                   required=""
                   name="cc_expiration"
                 />
-                <div class="invalid-feedback">Expiration date required</div>
+
+                {{#if errors.cc_expiration }}
+                {{#each errors.cc_expiration}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
 
               <div class="col-md-3">
@@ -97,7 +124,12 @@
                   required=""
                   name="cc_cvv"
                 />
-                <div class="invalid-feedback">Security code required</div>
+
+                {{#if errors.cc_cvv }}
+                {{#each errors.cc_cvv}}
+                <div class="invalid-feedback">{{ this }}</div>
+                {{/each}}
+                {{/if}}
               </div>
             </div>
 
