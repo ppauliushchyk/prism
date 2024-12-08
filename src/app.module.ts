@@ -1,4 +1,9 @@
+import { join } from "path";
+
 import { Module } from "@nestjs/common";
+import { ConfigModule } from "@nestjs/config";
+import { ServeStaticModule } from "@nestjs/serve-static";
+
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { PaymentController } from "./payment/payment.controller";
@@ -14,6 +19,10 @@ import { RouterModule } from "@nestjs/core";
     HttpModule,
     ProviderModule,
     RouterModule.register([{ module: ProviderModule, path: "provider" }]),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, "..", "../public"),
+      serveRoot: "/public/",
+    }),
   ],
   controllers: [AppController, PaymentController],
   providers: [AppService],

@@ -1,9 +1,10 @@
-import { AppModule } from "./app.module";
 import { join } from "path";
-import { NestExpressApplication } from "@nestjs/platform-express";
+
 import { NestFactory } from "@nestjs/core";
-import helmet from "helmet";
+import { NestExpressApplication } from "@nestjs/platform-express";
 import { engine } from "express-handlebars";
+
+import { AppModule } from "./app.module";
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -11,7 +12,6 @@ async function bootstrap() {
   });
 
   app.enableCors();
-  app.use(helmet());
 
   app.useStaticAssets(join(__dirname, "..", "public"));
   app.setBaseViewsDir(join(__dirname, "..", "views"));
@@ -32,4 +32,5 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT ?? 3000);
 }
+
 bootstrap();
