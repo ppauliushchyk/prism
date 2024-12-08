@@ -1,0 +1,112 @@
+{{> status status='bg-dark'}}
+
+<div class="container" style="margin-top: -100px">
+  <div class="row">
+    <div class="col-12 col-md-10 col-lg-7 mx-auto">
+      <div class="card border-0 rounded-4 shadow-lg">
+        <div class="card-body p-4">
+          <h4 class="mb-3">Payment Form</h4>
+
+          <form class="needs-validation mb-0" novalidate="">
+            <div class="row gy-3 mb-4">
+              <div class="col-sm-6">
+                <label for="amount__input" class="form-label">Amount</label>
+                <input
+                  class="form-control"
+                  id="amount__input"
+                  name="amount"
+                  placeholder=""
+                  required=""
+                  type="text"
+                  value=""
+                />
+                <div class="invalid-feedback">Valid amount is required.</div>
+              </div>
+
+              <div class="col-sm-6">
+                <label for="currency__input" class="form-label">Currency</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="currency__input"
+                  placeholder=""
+                  value=""
+                  required=""
+                  name="currency"
+                />
+                <div class="invalid-feedback">Valid currency is required.</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="cc-name__input" class="form-label"
+                  >Name on card</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-name__input"
+                  placeholder=""
+                  required=""
+                  name="cc_name"
+                />
+                <small class="text-body-secondary"
+                  >Full name as displayed on card</small
+                >
+                <div class="invalid-feedback">Name on card is required</div>
+              </div>
+
+              <div class="col-md-6">
+                <label for="cc-number__input" class="form-label"
+                  >Credit card number</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-number__input"
+                  placeholder=""
+                  required=""
+                  name="cc_number"
+                />
+                <div class="invalid-feedback">
+                  Credit card number is required
+                </div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="cc-expiration__input" class="form-label"
+                  >Expiration</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-expiration__input"
+                  placeholder=""
+                  required=""
+                  name="cc_expiration"
+                />
+                <div class="invalid-feedback">Expiration date required</div>
+              </div>
+
+              <div class="col-md-3">
+                <label for="cc-cvv__input" class="form-label">CVV</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="cc-cvv__input"
+                  placeholder=""
+                  required=""
+                  name="cc_cvv"
+                />
+                <div class="invalid-feedback">Security code required</div>
+              </div>
+            </div>
+
+            <button class="w-100 btn btn-primary btn-lg" type="submit">
+              Continue to pay
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
