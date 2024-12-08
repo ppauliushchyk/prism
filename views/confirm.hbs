@@ -1,0 +1,9 @@
+<form id="confirm__form" method="{{ method }}" action="{{ url }}">
+  <input type="hidden" name="MD" value="{{ md }}" />
+  <input type="hidden" name="PaReq" value="{{ pa_req }}" />
+  <input type="hidden" name="TermUrl" value="{{ term_url }}" />
+</form>
+
+<script>
+  document.getElementById("confirm__form").submit();
+</script>
