@@ -4,7 +4,7 @@
 
 A robust financial application built with NestJS, Prisma ORM with a Postgres database, and Bootstrap SCSS.
 
-[Preview](https://github.com/ppauliushchyk/prism/assets/preview.jpeg)
+[Preview](/assets/preview.jpeg)
 
 ## Installation
 
